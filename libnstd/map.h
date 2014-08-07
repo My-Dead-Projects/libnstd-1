@@ -41,6 +41,7 @@ public:
     public:
         iterator(Node *);
         value_type& operator * ();
+        value_type * operator -> ();
     };
     
     pair<iterator, bool> insert(const value_type& value);
@@ -93,6 +94,11 @@ map_type::recursive_find(const map_type::key_type& key) {
 map_template
 map_typename::value_type& map_type::iterator::operator * () {
     return node->value;
+}
+
+map_template
+map_typename::value_type * map_type::iterator::operator -> () {
+    return &node->value;
 }
 
 map_template

@@ -68,6 +68,7 @@ pair<map_typename::iterator, bool>
 map_type::insert(const map_type::value_type& value) {
     if (node == nullptr) {
         node = new Node(value);
+        _size++;
         return std::make_pair(iterator(node), true);
     } else {
         return std::make_pair(iterator(nullptr), false);

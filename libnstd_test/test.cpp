@@ -21,6 +21,7 @@ SCENARIO("map", "[map]") {
             REQUIRE(result.second == true);
             REQUIRE(result.first->first == 1);
             REQUIRE(result.first->second == 5);
+            REQUIRE(map.size() == 1);
         }
     }
 }

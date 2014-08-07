@@ -29,6 +29,8 @@ private:
         Node * rnode;
     } * node;
     
+    size_t _size;
+    
     Node * recursive_find(const key_type& key);
     
 public:
@@ -39,8 +41,39 @@ public:
     
     pair<iterator, bool> insert(const value_type& value);
     
+    size_t size();
+    
 };
+
+}
+
+/****************************************************/
+/**************** Method Definitions ****************/
+/****************************************************/
+
+#define map_template template <class Key, class T, class Compare>
+#define map_type nstd::map<Key, T, Compare>
+#define map_typename typename map_type
+
+map_template
+map_typename::Node *
+map_type::recursive_find(const map_type::key_type& key) {
     
 }
+
+map_template
+pair<map_typename::iterator, bool>
+map_type::insert(const map_type::value_type& value) {
+    
+}
+
+map_template
+size_t map_type::size() {
+    return _size;
+}
+
+#undef map_template
+#undef map_type
+#undef map_typename
 
 #endif

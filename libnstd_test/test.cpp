@@ -27,5 +27,19 @@ SCENARIO("map", "[map]") {
                 auto result = map.find(1);
             }
         }
+        
+        WHEN("two values are inserted") {
+            map.insert(make_pair(1, 5));
+            auto result = map.insert(make_pair(2, 10));
+            
+            REQUIRE(result.second == true);
+            REQUIRE(result.first->first == 2);
+            REQUIRE(result.first->second == 10);
+            REQUIRE(map.size() == 2);
+            
+            WHEN("the second value is searched for") {
+                auto result = map.find(2);
+            }
+        }
     }
 }

@@ -34,6 +34,7 @@ private:
     size_t _size;
     
     Node * recursive_find(const key_type& key, Node * n);
+    Node * recursive_insert(const value_type& value, Node * n);
     
 public:
     
@@ -78,10 +79,10 @@ map_type::map() : _size(0), node(nullptr) {
 map_template
 pair<map_typename::iterator, bool>
 map_type::insert(const map_type::value_type& value) {
-    if (node == nullptr) {
-        node = new Node(value);
+    auto n = recursive_insert(value, node);
+    if (n != nullptr) {
         _size++;
-        return std::make_pair(iterator(node), true);
+        return std::make_pair(iterator(n), true);
     } else {
         return std::make_pair(iterator(nullptr), false);
     }
@@ -120,6 +121,26 @@ map_type::recursive_find(const map_type::key_type& key, map_type::Node * n) {
         return recursive_find(key, n->rnode);
     } else {
         return n;
+    }
+}
+
+/**
+ * map:: recursive_insert()
+ * private
+ */
+map_template
+map_typename::Node *
+map_type::recursive_insert(const map_type::value_type& value, map_type::Node * n) {
+    if (n == nullptr) {
+        return n = new Node(value);
+    }
+    key_compare compare;
+    if (compare(value.first, n->value.first)) {
+        return recursive_insert(value, n->lnode);
+    } else if (compare(n->value.first, value.first)) {
+        return recursive_insert(value, n->rnode);
+    } else {
+        return nullptr;
     }
 }
 

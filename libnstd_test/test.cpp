@@ -22,6 +22,10 @@ SCENARIO("map", "[map]") {
             REQUIRE(result.first->first == 1);
             REQUIRE(result.first->second == 5);
             REQUIRE(map.size() == 1);
+            
+            WHEN("that value is searched for") {
+                auto result = map.find(1);
+            }
         }
     }
 }

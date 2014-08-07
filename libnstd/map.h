@@ -58,12 +58,9 @@ public:
 #define map_type nstd::map<Key, T, Compare>
 #define map_typename typename map_type
 
-map_template
-map_typename::Node *
-map_type::recursive_find(const map_type::key_type& key) {
-    
-}
-
+/**
+ * Public methods
+ */
 map_template
 pair<map_typename::iterator, bool>
 map_type::insert(const map_type::value_type& value) {
@@ -80,11 +77,26 @@ size_t map_type::size() {
     return _size;
 }
 
+/**
+ * Private methods
+ */
+map_template
+map_typename::Node *
+map_type::recursive_find(const map_type::key_type& key) {
+    
+}
+
+/**
+ * Iterator
+ */
 map_template
 map_type::iterator::iterator(map_type::Node * n) {
     node = n;
 }
 
+/**
+ * Node
+ */
 map_template
 map_type::Node::Node(const map_type::value_type& v) : value(v) {
     

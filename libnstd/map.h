@@ -27,6 +27,7 @@ private:
         value_type value;
         Node * lnode;
         Node * rnode;
+        Node(const value_type&);
     } * node;
     
     size_t _size;
@@ -37,6 +38,8 @@ public:
     
     class iterator {
         Node * node;
+    public:
+        iterator(Node *);
     };
     
     pair<iterator, bool> insert(const value_type& value);
@@ -64,12 +67,27 @@ map_type::recursive_find(const map_type::key_type& key) {
 map_template
 pair<map_typename::iterator, bool>
 map_type::insert(const map_type::value_type& value) {
-    
+    if (node == nullptr) {
+        node = new Node(value);
+        return std::make_pair(iterator(node), true);
+    } else {
+        return std::make_pair(iterator(nullptr), false);
+    }
 }
 
 map_template
 size_t map_type::size() {
     return _size;
+}
+
+map_template
+map_type::iterator::iterator(map_type::Node * n) {
+    node = n;
+}
+
+map_template
+map_type::Node::Node(const map_type::value_type& v) : value(v) {
+    
 }
 
 #undef map_template

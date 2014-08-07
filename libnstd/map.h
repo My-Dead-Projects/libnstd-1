@@ -39,7 +39,7 @@ public:
         Node * node;
     };
     
-    pair<iterator, bool> insert(const value_type& value);
+    pair<iterator, bool> insert(const key_type& key, const mapped_type& value);
     
     size_t size();
     
@@ -63,8 +63,8 @@ map_type::recursive_find(const map_type::key_type& key) {
 
 map_template
 pair<map_typename::iterator, bool>
-map_type::insert(const map_type::value_type& value) {
     
+map_type::insert(const map_type::key_type& key, const map_type::mapped_type& value) {
 }
 
 map_template

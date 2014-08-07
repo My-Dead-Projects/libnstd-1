@@ -4,6 +4,7 @@
  * main.cpp
  */
 
+#include "catch.hpp"
 
 int main() {
     

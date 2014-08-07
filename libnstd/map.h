@@ -61,7 +61,7 @@ public:
 #define map_typename typename map_type
 
 /**
- * Public methods
+ * map::insert()
  */
 map_template
 pair<map_typename::iterator, bool>
@@ -75,13 +75,17 @@ map_type::insert(const map_type::value_type& value) {
     }
 }
 
+/**
+ * map::size()
+ */
 map_template
 size_t map_type::size() {
     return _size;
 }
 
 /**
- * Private methods
+ * map::recursive_find()
+ * private
  */
 map_template
 map_typename::Node *
@@ -90,25 +94,31 @@ map_type::recursive_find(const map_type::key_type& key) {
 }
 
 /**
- * Iterator
+ * map::iterator::operator *()
  */
 map_template
 map_typename::value_type& map_type::iterator::operator * () {
     return node->value;
 }
 
+/**
+ * map::iterator::operator ->()
+ */
 map_template
 map_typename::value_type * map_type::iterator::operator -> () {
     return &node->value;
 }
 
+/**
+ * map::iterator::iterator()
+ */
 map_template
 map_type::iterator::iterator(map_type::Node * n) {
     node = n;
 }
 
 /**
- * Node
+ * map::Node::Node()
  */
 map_template
 map_type::Node::Node(const map_type::value_type& v) : value(v) {

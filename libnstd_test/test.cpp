@@ -31,20 +31,25 @@ SCENARIO("map", "[map]") {
             }
         }
         
-        WHEN("two values are inserted") {
+        WHEN("some values are inserted") {
             map.insert(make_pair(1, 5));
-            auto result = map.insert(make_pair(2, 10));
+            map.insert(make_pair(2, 10));
+            map.insert(make_pair(3, 15));
+            map.insert(make_pair(4, 20));
+            map.insert(make_pair(5, 25));
             
-            REQUIRE(result.second == true);
-            REQUIRE(result.first->first == 2);
-            REQUIRE(result.first->second == 10);
-            REQUIRE(map.size() == 2);
-            
-            WHEN("the second value is searched for") {
-                auto result = map.find(2);
+            WHEN("the third value is searched for") {
+                auto result = map.find(3);
                 
-                REQUIRE(result->first == 2);
-                REQUIRE(result->second == 10);
+                REQUIRE(result->first == 3);
+                REQUIRE(result->second == 15);
+            }
+            
+            WHEN("the fifth value is searched for") {
+                auto result = map.find(5);
+                
+                REQUIRE(result->first == 5);
+                REQUIRE(result->second == 25);
             }
         }
     }

@@ -125,7 +125,7 @@ map_type::recursive_find(const map_type::key_type& key, map_type::Node * n) {
 }
 
 /**
- * map:: recursive_insert()
+ * map::recursive_insert()
  * private
  */
 map_template

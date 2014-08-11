@@ -27,6 +27,7 @@ SCENARIO("map", "[map]") {
                 auto result = map.find(1);
                 
                 REQUIRE(result->first == 1);
+                REQUIRE(result->second == 5);
             }
         }
         
@@ -41,6 +42,9 @@ SCENARIO("map", "[map]") {
             
             WHEN("the second value is searched for") {
                 auto result = map.find(2);
+                
+                REQUIRE(result->first == 2);
+                REQUIRE(result->second == 10);
             }
         }
     }

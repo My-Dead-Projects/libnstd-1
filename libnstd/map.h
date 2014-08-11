@@ -34,7 +34,7 @@ private:
     size_t _size;
     
     Node * recursive_find(const key_type& key, Node * n);
-    Node * recursive_insert(const value_type& value, Node * n);
+    Node * recursive_insert(const value_type& value, Node *& n);
     
 public:
     
@@ -130,7 +130,7 @@ map_type::recursive_find(const map_type::key_type& key, map_type::Node * n) {
  */
 map_template
 map_typename::Node *
-map_type::recursive_insert(const map_type::value_type& value, map_type::Node * n) {
+map_type::recursive_insert(const map_type::value_type& value, map_type::Node *& n) {
     if (n == nullptr) {
         return n = new Node(value);
     }
